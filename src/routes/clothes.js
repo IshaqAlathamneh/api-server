@@ -24,6 +24,11 @@ async function getClothes(req, res) {
 
 async function getOneClothes(req, res) {
     let id = parseInt(req.params.id); // from the url its a string
+    console.log('--------------------------');
+    console.log(req.body);
+    console.log('--------------------------');
+    console.log(id);
+    console.log('--------------------------');
     let oneItem = await clothesInstance.get(id);
     res.status(200).json(oneItem);
 }

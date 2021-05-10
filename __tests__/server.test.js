@@ -26,66 +26,75 @@ describe('Testing Server Module', ()=> {
 
     it('Create a record using POST', async ()=> {
         let response = await serverRequest.post('/clothes').send({
-            name: "ishaq",
-            level: 2040
+            name : 'bloozeh',
+            price: 20,
+            size: 'L'
         });
         expect(response.status).toEqual(201);
-        expect(response.body.record.name).toEqual("ishaq");
-        expect(response.body.record.level).toEqual(2040);
+        expect(response.body.name).toEqual("bloozeh");
+        expect(response.body.price).toEqual(20);
         
     });
 
     it('Read a list of records using GET', async ()=> {
-        let myPost = await serverRequest.post('/clothes').send({
-            name: "ishaq",
-            level: 2040
-        }).send({
-            name: "gaga",
-            level: 1
-        });
-        let response = await serverRequest.get('/clothes')
+        // let myPost = await serverRequest.post('/clothes').send({
+        //     name : 'bloozeh',
+        //     price: 20,
+        //     size: 'L'
+        // }).send({
+        //     name : 'pants',
+        //     price: 20,
+        //     size: 'L'
+        // });
+        let response = await serverRequest.get('/food')
         expect(response.status).toEqual(200);
-        expect(response.body[0].record.name).toEqual("ishaq");
-        expect(response.body[0].record.level).toEqual(2040);
-        expect(response.body.length).toEqual(2);
+        expect(response.body[0].name).toEqual("aaa");
+        expect(response.body[0].calories).toEqual(50);
+        // expect(response.body.length).toEqual(3);
     });
     it('Read a record using GET', async ()=> {
-        let myPost = await serverRequest.post('/clothes').send({
-            name: "ishaq",
-            level: 2040
-        }).send({
-            name: "gaga",
-            level: 1
-        });
-        let response = await serverRequest.get('/clothes/1')
+        // let myPost = await serverRequest.post('/clothes').send({
+        //     name : 'bloozeh',
+        //     price: 20,
+        //     size: 'L'
+        // }).send({
+        //     name : 'pants',
+        //     price: 20,
+        //     size: 'L'
+        // });
+        let response = await serverRequest.get('/food/1')
         expect(response.status).toEqual(200);
-        expect(response.body.record.name).toEqual("ishaq");
-        expect(response.body.record.level).toEqual(2040);
+        expect(response.body.name).toEqual("aaa");
+        expect(response.body.calories).toEqual(50);
     });
     it('Update a record using PUT', async ()=> {
-        let myPost = await serverRequest.post('/food').send({
-            name: "ishaq",
-            level: 2040
-        }).send({
-            name: "gaga",
-            level: 1
-        });
+        // let myPost = await serverRequest.post('/food').send({
+        //     name : 'bloozeh',
+        //     calories: 20,
+            
+        // }).send({
+        //     name : 'pants',
+        //     calories: 500
+        // });
         let response = await serverRequest.put('/food/1').send({
-            name: "gaga",
-            level: 7
+            name : 'aaa',
+            calories: 50,
+            type: 'FRUIT'
         });
         expect(response.status).toEqual(200);
-        expect(response.body.record.name).toEqual("gaga");
-        expect(response.body.record.level).toEqual(7);
+        expect(response.body.type).toEqual("FRUIT");
+        // expect(response.body.price).toEqual(500);
     });
     it('Destroy a record using DELETE', async ()=> {
-        let myPost = await serverRequest.post('/clothes').send({
-            name: "ishaq",
-            level: 2040
-        }).send({
-            name: "gaga",
-            level: 1
-        });
+        // let myPost = await serverRequest.post('/clothes').send({
+        //     name : 'bloozeh',
+        //     price: 20,
+        //     size: 'L'
+        // }).send({
+        //     name : 'pants',
+        //     price: 20,
+        //     size: 'L'
+        // });
         let response = await serverRequest.delete('/clothes/1')
         expect(response.status).toEqual(202);
         expect(response.body.deleted).toEqual(true);
