@@ -23,12 +23,8 @@ async function getClothes(req, res) {
 }
 
 async function getOneClothes(req, res) {
-    let id = parseInt(req.params.id); // from the url its a string
-    console.log('--------------------------');
-    console.log(req.body);
-    console.log('--------------------------');
-    console.log(id);
-    console.log('--------------------------');
+    let id = req.params.id; // from the url its a string
+    
     let oneItem = await clothesInstance.get(id);
     res.status(200).json(oneItem);
 }
@@ -42,7 +38,7 @@ async function createClothes(req, res) {
 }
 
 async function updateClothes(req, res) {
-    let id = parseInt(req.params.id);
+    let id = req.params.id;
     const obj = req.body;
     
     let updatedThing = await clothesInstance.update(id, obj);
@@ -50,7 +46,7 @@ async function updateClothes(req, res) {
 }
 
 async function deleteClothes(req, res) {
-    let id = parseInt(req.params.id);
+    let id = req.params.id;
     let deleted = await clothesInstance.delete(id);
     let msg = deleted ? 'Item is deleted' : 'Item was not Found';
     let statusCode = deleted ? 202 : 204;
