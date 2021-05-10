@@ -23,7 +23,9 @@ async function getFood(req, res) {
 }
 
 async function getOneFood(req, res) {
-    let id = parseInt(req.params.id); // from the url its a string
+    let id = req.params.id; // from the url its a string
+    console.log(req.params);
+    console.log(req.body);
     let oneItem = await foodInstance.get(id);
     res.status(200).json(oneItem);
 }
@@ -36,14 +38,14 @@ async function createFood(req, res) {
 }
 
 async function updateFood(req, res) {
-    let id = parseInt(req.params.id);
+    let id = req.params.id;
     const obj = req.body;
     let updatedThing = await foodInstance.update(id, obj);
     res.status(200).json(updatedThing);
 }
 
 async function deleteFood(req, res) {
-    let id = parseInt(req.params.id);
+    let id = req.params.id;
     let deleted = await foodInstance.delete(id);
     let msg = deleted ? 'Item is deleted': 'Item was not Found'
     let statusCode = deleted ? 202 : 204;
