@@ -14,6 +14,9 @@ router.get('/food/:id', getOneFood);
 router.post('/food', createFood);
 router.put('/food/:id', updateFood);
 router.delete('/food/:id', deleteFood);
+router.get('/ishaq', (req,res)=> {
+    res.send('خاوة زبطت')
+});
 
 
 async function getFood(req, res) {
