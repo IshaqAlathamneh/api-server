@@ -10,7 +10,6 @@ const TasksInstance = new Tasks(myTask);
 
 // add my RESTFUL APIs declarations
 router.get('/tasks', getTasks);
-// router.get('/tasks/:id', getOneTask);
 router.post('/tasks', createTasks);
 router.put('/tasks/:id', updateTasks);
 router.delete('/tasks/:id', deleteTasks);
@@ -31,6 +30,7 @@ async function getTasks(req, res) {
 
 async function createTasks(req, res) {
     // use create Method from the class
+    console.log('aaaaa');
     let obj = req.body;
     console.log('my obj-->',obj);
     let newItem = await TasksInstance.create(obj);

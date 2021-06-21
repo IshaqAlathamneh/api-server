@@ -18,8 +18,11 @@ class ModelCollection {
     }
 
     create(obj) {
+        console.log('111111');
         let newRecord = new this.model(obj);
+        console.log('22222');
         newRecord.save();
+        console.log('3333');
         return newRecord;
     }
 
