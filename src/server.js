@@ -7,7 +7,7 @@ const errorHandler = require('./error-handlers/500');
 const logger = require('./middleware/logger');
 const foodRouter = require('./routes/food');
 const clothesRouter = require('./routes/clothes');
-
+const tsksRouter = require('./routes/tasks')
 // Global Middleware
 app.use(logger);
 // app.use(express.urlencoded({ extended: true }));
@@ -15,6 +15,7 @@ app.use(express.json());
 
 app.use(foodRouter);
 app.use(clothesRouter);
+app.use(tsksRouter)
 
 
 function start(){
