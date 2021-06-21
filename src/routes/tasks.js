@@ -18,7 +18,10 @@ router.delete('/tasks/:id', deleteTasks);
 async function getTasks(req, res) {
     // get all items
     let items = await TasksInstance.get();
-    res.status(200).json(items);
+    res.status(200).json({
+        count: items.length,
+        results: items
+    });
 }
 
 // async function getOneTask(req, res) {
