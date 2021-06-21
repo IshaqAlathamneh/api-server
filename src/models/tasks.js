@@ -6,7 +6,7 @@ const taskSchema = mongoose.Schema({
     text : {type: String, required: true},
     assignee: {type: String, required: true},
     difficulty: {type: String, required: true},
-    complete: {type: String, enum : ['true', 'false'],  required: true}
+    complete: {type: Boolean,  required: true}
 });
 // a schema is the structure of my object in this collection
 // a model is a wrapper for the schema
